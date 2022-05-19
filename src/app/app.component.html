@@ -4,11 +4,17 @@
   </form>
 </div>
 
+<div *ngIf="!weatherData">
+  <h3>Check your connection and reload again</h3>
+</div>
+
 <div class="container" *ngIf="weatherData">
     <div class="upperdiv">
+     
      <img src="../assets/cold-night.jpg" *ngIf="weatherData.main.temp <= 15">
-     <img src="../assets/Hot-weather.jpg" *ngIf="weatherData.main.temp >= 30">
-     <img src="../assets/sunny-icon.jpg" *ngIf="((weatherData.main.temp < 15) && (weatherData.main.temp > 30))">
+     <img src="../assets/Hot-weather.jpg" *ngIf="weatherData.main.temp >= 28">
+     <img src="../assets/sunny-icon.jpg" *ngIf="((weatherData.main.temp > 15) && (weatherData.main.temp <= 27))">
+     <img src="../assets/bahir-dar.jpg" *ngIf="weatherData.name == 'Bahir Dar'">
      <div class="weatherinfo">
       <div class="location">
          {{weatherData.name}}
@@ -78,75 +84,5 @@
 
 
 
-<!-- <div class="container">
-    <div class="upperdiv">
-     <img src="../assets/cold-night.jpg" *ngIf="14 < 15">
-     <img src="../assets/Hot-weather.jpg" *ngIf="14 > 15">
-    
-     <div class="weatherinfo">
-      <div class="location">
-         Seattle
-      </div>
-      <div class="temperature">
-        {{14 | number: '1.0-0'}}°C
-      </div>
-    </div>
-    </div>
-
-    <div class="lowerdiv">
-      <div class="moreinfo">
-        More information
-      </div>
-
-      <div class="moreinfocontainer">
-       
-        
-        <div class="infoblock">
-          <div class="infoblocklabel">
-            <img src="../assets/min.png" alt="">
-            <span>min</span>
-          </div>
-          <div class="infoblockvalue">
-             10°C   
-          </div>
-        </div>
-
-        <div class="infoblock">
-          <div class="infoblocklabel">
-            <img src="../assets/maximum.png" alt="">
-            <span>max</span>
-          </div>
-          <div class="infoblockvalue">
-             19°C   
-          </div>
-        </div>
-
-        <div class="infoblock">
-          <div class="infoblocklabel">
-            <img src="../assets/Humidity-icon.png" alt="">
-            <span>Humidity</span>
-          </div>
-          <div class="infoblockvalue">
-             77%   
-          </div>
-        </div>
-
-        <div class="infoblock">
-          <div class="infoblocklabel">
-            <img src="../assets/wind.jpg" alt="">
-            <span>Wind</span>
-          </div>
-          <div class="infoblockvalue">
-             11KM/H   
-          </div>
-        </div>
-
-        
-         
-      </div>
-
-      
-    </div>
-</div> -->
 
 <router-outlet></router-outlet>
